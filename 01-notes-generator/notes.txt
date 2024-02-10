@@ -1,0 +1,42 @@
+# Svelte
+
+* Pages
+
+-> In Svelte, pages are identified by nomenclature "+page.svelte"
+-> The route are identified by the directory name. The file +page.svelte inside a directory named "hello"
+  -> will be accessed in navigator by the route url/hello
+
+# Config
+
+-> The basic HTML structure can be accessed or edited in the file app.html inside src directory
+-> The static folder can be used to save all static files, like json, videos or images
+
+# Structure and Concepts
+
+-> The .svelte file will have all code, what includes html, js (ts) and css codes
+-> To use JavaScript codes, use <script></script> tag, and for styles, <style></style> like pure html files
+-> By default, the style are scoped. This means that by default they will only affect the tags of the file itself
+-> It's possible to add global styles using a <style></style> tag in app.html
+-> It's possible too use global styles with :global() notation
+
+# Global States (Svelte Stores)
+
+-> To manage Global states like contextApi on React, in Svelte, we use the Store concept
+-> It is necessary to import { writable } or { readable } from 'svelte/store' to use this
+  -> Writable: allows the user to change his value
+  -> Readable: allows the user to access the value, but not changing him
+-> To see how declare and use, consult file: ./src/stores/notes.ts
+
+# Directives
+
+-> To use directives on Svelte, just use on:eventname, bind:variable, use:action etc.
+-> To prevent the event default action, it's possible to use just a pipe with the event indication
+  -> like: <tag on:click|preventDefault
+-> It is possible to use other event modifiers, like stopPropagation, once, self etc.
+  -> https://svelte.dev/docs/element-directives#on-eventname
+-> To bind a variable value and turn it an updatable state, use the directive bind:value={variable}
+
+# Iterations
+
+-> To use iterations like the map method of array in React or for in Vite, use the #each key
+  -> Structure: { #each array as item (key) } ... { /each }
