@@ -5,6 +5,10 @@
 -> In Svelte, pages are identified by nomenclature "+page.svelte"
 -> The route are identified by the directory name. The file +page.svelte inside a directory named "hello"
   -> will be accessed in navigator by the route url/hello
+-> Using a directory with [name], the name will be considered as a parameter, similar to dynamic routes in Next.js
+-> To load data inside a page, it's possible to use the import type { PageData } from "./$types" in +page.svelte file
+  -> Necessary to export a variable of type PageData
+  -> It will load the returned data from a function load({ params }: LoadEvent) {} exported on the +page.ts file inside the same route
 
 # Config
 
@@ -40,3 +44,8 @@
 
 -> To use iterations like the map method of array in React or for in Vite, use the #each key
   -> Structure: { #each array as item (key) } ... { /each }
+
+# Error Handling
+
+-> To throw Svelte errors, import { error } from @sveltejs/kit and throw error(status, message) in the code if it's necessary
+-> To configure how error are exposed to user, create and configure a +error.svelte file inside the route directory
